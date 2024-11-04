@@ -1,13 +1,15 @@
+from typing import Union, Dict, List
+
 import requests
 from datetime import datetime, timezone, timedelta
 
 
-def fetch_json(url):
+def fetch_json(url: str) -> Union[Dict, List]:
     response = requests.get(url)
     return response.json()
 
 
-def print_time(timestamp_ms, timezone_s):
+def print_time(timestamp_ms: int, timezone_s: int) -> None:
     timestamp_s = timestamp_ms / 1000
 
     hours = timezone_s // 3600000
@@ -20,7 +22,7 @@ def print_time(timestamp_ms, timezone_s):
     print(local_time_str, timezone_name)
 
 
-def average_delta(url):
+def average_delta(url: str) -> float:
     deltas = []
     for _ in range(5):
         start_time = datetime.now()

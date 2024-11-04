@@ -23,7 +23,6 @@ for unit in $units; do
   sudo sed -i "s|^ExecStart=.*|ExecStart=$new_exec_start|" "/etc/systemd/system/$unit"
 
   sudo systemctl daemon-reload
-
   sudo systemctl start "$unit"
 
   echo "unit $unit is running with correct WorkingDirectory and ExecStart..."
